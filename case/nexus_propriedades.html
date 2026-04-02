@@ -182,11 +182,14 @@
         document.addEventListener("DOMContentLoaded", function() {
             const gallery = document.getElementById('nexus-gallery');
             
-            // ATENÇÃO: Confirme se o nome da pasta no GitHub é 'images' ou 'imagens' e ajuste abaixo se necessário!
-            const baseUrl = "https://raw.githubusercontent.com/OtavioPelego/phosphorus/main/images/";
-            const extension = ".png"; // ou .jpg se for o caso
+            // Ajustado para o formato de link que já sabemos que funciona no seu GitHub
+            // ATENÇÃO: Se a pasta for 'images' em vez de 'imagens', troque a palavra abaixo!
+            const baseUrl = "https://github.com/OtavioPelego/phosphorus/blob/main/imagens/";
+            
+            // IMPORTANTE: Verifique se suas imagens são .png ou .jpg. Se for .jpg, altere aqui!
+            const extension = ".png"; 
 
-            // Lista exata das imagens que você subiu (1 ao 8 e 13 ao 19)
+            // Lista exata das imagens que você subiu
             const imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19];
 
             imageNumbers.forEach(i => {
@@ -194,15 +197,16 @@
                 let num = i.toString().padStart(2, '0');
                 
                 // Monta o nome do arquivo codificando os espaços
-                let fileName = `Site%20Demo%20Nexus%20EM%20-%20${num}${extension}`;
+                let fileName = `Site%20Demo%20Nexus%20EM%20-%20${num}${extension}?raw=true`;
                 let fullUrl = baseUrl + fileName;
 
                 // Cria o elemento da imagem
                 let imgContainer = document.createElement('div');
                 imgContainer.className = "snap-center shrink-0 w-[85%] md:w-[60%] lg:w-[45%] bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 shadow-lg";
                 
+                // Removi temporariamente o 'onerror' para podermos ver se a imagem quebra
                 imgContainer.innerHTML = `
-                    <img src="${fullUrl}" alt="Demo Nexus Tela ${num}" class="w-full h-auto object-cover hover:scale-105 transition duration-500" loading="lazy" onerror="this.parentElement.style.display='none'">
+                    <img src="${fullUrl}" alt="Demo Nexus Tela ${num}" class="w-full h-auto object-cover hover:scale-105 transition duration-500" loading="lazy">
                 `;
 
                 gallery.appendChild(imgContainer);
