@@ -181,13 +181,16 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const gallery = document.getElementById('nexus-gallery');
-            const baseUrl = "https://raw.githubusercontent.com/OtavioPelego/phosphorus/main/images/";
             
-            // Defina aqui a extensão das suas imagens (png, jpg, jpeg)
-            const extension = ".png"; 
+            // ATENÇÃO: Confirme se o nome da pasta no GitHub é 'images' ou 'imagens' e ajuste abaixo se necessário!
+            const baseUrl = "https://raw.githubusercontent.com/OtavioPelego/phosphorus/main/images/";
+            const extension = ".png"; // ou .jpg se for o caso
 
-            for (let i = 1; i <= 19; i++) {
-                // Formata o número para ter sempre dois dígitos (01, 02, ..., 19)
+            // Lista exata das imagens que você subiu (1 ao 8 e 13 ao 19)
+            const imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19];
+
+            imageNumbers.forEach(i => {
+                // Formata o número para ter sempre dois dígitos (01, 02, etc)
                 let num = i.toString().padStart(2, '0');
                 
                 // Monta o nome do arquivo codificando os espaços
@@ -203,7 +206,7 @@
                 `;
 
                 gallery.appendChild(imgContainer);
-            }
+            });
         });
     </script>
 </body>
