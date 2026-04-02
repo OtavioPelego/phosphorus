@@ -99,7 +99,7 @@
                         <span class="text-xs text-slate-500 bg-slate-900 px-2 py-1 rounded">Deslize para ver mais <i class="fas fa-arrow-right ml-1"></i></span>
                     </div>
                     
-                    <div class="flex overflow-x-scroll pb-4 hide-scroll-bar gap-4 snap-x snap-mandatory" id="nexus-gallery">
+                    <div class="flex overflow-x-scroll pb-4 hide-scroll-bar gap-4 cursor-grab" id="nexus-gallery">
                         </div>
                 </div>
                 
@@ -182,34 +182,65 @@
         document.addEventListener("DOMContentLoaded", function() {
             const gallery = document.getElementById('nexus-gallery');
             
-            // Ajustado para o formato de link que já sabemos que funciona no seu GitHub
-            // ATENÇÃO: Se a pasta for 'images' em vez de 'imagens', troque a palavra abaixo!
             const baseUrl = "https://github.com/OtavioPelego/phosphorus/blob/main/images/";
-            
-            // IMPORTANTE: Verifique se suas imagens são .png ou .jpg. Se for .jpg, altere aqui!
             const extension = ".jpg"; 
 
-            // Lista exata das imagens que você subiu
             const imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19];
 
             imageNumbers.forEach(i => {
-                // Formata o número para ter sempre dois dígitos (01, 02, etc)
                 let num = i.toString().padStart(2, '0');
-                
-                // Monta o nome do arquivo codificando os espaços
                 let fileName = `Site%20Demo%20Nexus%20EM%20-%20${num}${extension}?raw=true`;
                 let fullUrl = baseUrl + fileName;
 
-                // Cria o elemento da imagem
                 let imgContainer = document.createElement('div');
-                imgContainer.className = "snap-center shrink-0 w-[85%] md:w-[60%] lg:w-[45%] bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 shadow-lg";
+                imgContainer.className = "shrink-0 w-[85%] md:w-[60%] lg:w-[45%] bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 shadow-lg pointer-events-none";
                 
-                // Removi temporariamente o 'onerror' para podermos ver se a imagem quebra
                 imgContainer.innerHTML = `
                     <img src="${fullUrl}" alt="Demo Nexus Tela ${num}" class="w-full h-auto object-cover hover:scale-105 transition duration-500" loading="lazy">
                 `;
 
                 gallery.appendChild(imgContainer);
+            });
+
+            // --- LÓGICA DE ARRASTAR E ROLAR (DESKTOP) ---
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            gallery.addEventListener('mousedown', (e) => {
+                isDown = true;
+                gallery.classList.add('cursor-grabbing');
+                gallery.classList.remove('cursor-grab');
+                startX = e.pageX - gallery.offsetLeft;
+                scrollLeft = gallery.scrollLeft;
+            });
+            
+            gallery.addEventListener('mouseleave', () => {
+                isDown = false;
+                gallery.classList.remove('cursor-grabbing');
+                gallery.classList.add('cursor-grab');
+            });
+            
+            gallery.addEventListener('mouseup', () => {
+                isDown = false;
+                gallery.classList.remove('cursor-grabbing');
+                gallery.classList.add('cursor-grab');
+            });
+            
+            gallery.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - gallery.offsetLeft;
+                const walk = (x - startX) * 1.5; // Multiplicador de velocidade
+                gallery.scrollLeft = scrollLeft - walk;
+            });
+
+            // Rolagem horizontal com o scroll do mouse
+            gallery.addEventListener('wheel', (e) => {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    gallery.scrollLeft += e.deltaY;
+                }
             });
         });
     </script>
