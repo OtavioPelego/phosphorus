@@ -20,16 +20,48 @@
 </head>
 <body class="bg-slate-950 text-slate-300 antialiased min-h-screen flex flex-col selection:bg-blue-900 selection:text-blue-100 relative overflow-hidden">
 
-    <nav class="absolute top-0 w-full p-4 md:p-6 flex flex-wrap justify-between items-center z-50 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
+    <nav class="absolute top-0 w-full p-4 md:p-6 flex flex-wrap justify-between items-center z-50 border-b border-slate-800/50 bg-slate-950">
+        
         <a href="/" class="text-white font-bold tracking-widest text-sm uppercase opacity-90 hover:opacity-100 transition flex items-center gap-2 mb-3 md:mb-0">
-            <i class="fas fa-fire text-cyan-500"></i> Phosphorus
+            <i class="fas fa-fire text-blue-500"></i> Phosphorus
         </a>
         
-        <div class="flex flex-wrap items-center gap-4 md:gap-8 text-xs md:text-sm font-medium">
-            <a href="/home.html" class="text-slate-400 hover:text-cyan-400 transition">Agência</a>
-            <a href="/portfolio/cases.html" class="text-slate-400 hover:text-cyan-400 transition">Cases</a>
-            <a href="/portfolio/marketing.html" class="text-slate-400 hover:text-cyan-400 transition">Marketing (IA)</a>
-            <a href="mailto:pelegocorrea@gmail.com" class="text-slate-400 hover:text-blue-400 transition border border-slate-700 px-4 py-1.5 rounded-full hover:border-blue-500 hover:bg-blue-900/20">Contato</a>
+        <div class="flex flex-wrap items-center gap-4 md:gap-8 text-xs md:text-sm font-medium relative">
+            <a href="/home.html" class="text-slate-400 hover:text-white transition">A Agência</a>
+            <a href="/consultoria.html" class="text-slate-400 hover:text-amber-400 transition">O Centurião</a>
+            <a href="/portfolio/cases.html" class="text-slate-400 hover:text-white transition">Cases</a>
+            
+            <div class="relative group">
+                <button class="text-slate-400 hover:text-white transition flex items-center gap-1 py-2">
+                    Soluções <i class="fas fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
+                </button>
+                
+                <div class="absolute left-1/2 -translate-x-1/2 mt-0 w-56 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
+                    <div class="h-2 w-full bg-transparent"></div> <a href="/vortex.html" class="px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 border-b border-slate-800/50 flex items-center gap-3 transition-colors">
+                        <i class="fas fa-magnet w-4 text-cyan-500"></i> Vortex (Mkt)
+                    </a>
+                    <a href="/oxys.html" class="px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-orange-400 border-b border-slate-800/50 flex items-center gap-3 transition-colors">
+                        <i class="fas fa-bolt w-4 text-orange-500"></i> Oxys (Vendas)
+                    </a>
+                    <a href="/pulsus.html" class="px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-blue-400 border-b border-slate-800/50 flex items-center gap-3 transition-colors">
+                        <i class="fas fa-heartbeat w-4 text-blue-500"></i> Pulsus (Ops)
+                    </a>
+                    <a href="/sanus.html" class="px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-emerald-400 border-b border-slate-800/50 flex items-center gap-3 transition-colors">
+                        <i class="fas fa-shield-alt w-4 text-emerald-500"></i> Sanus (Fin/Adm)
+                    </a>
+                    <a href="/core.html" class="px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-purple-400 border-b border-slate-800/50 flex items-center gap-3 transition-colors">
+                        <i class="fas fa-chess-knight w-4 text-purple-500"></i> Core (Gestão)
+                    </a>
+                    <a href="/lumen.html" class="px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-yellow-400 border-b border-slate-800/50 flex items-center gap-3 transition-colors">
+                        <i class="fas fa-lightbulb w-4 text-yellow-500"></i> Lumen (BI)
+                    </a>
+                    <a href="/sapientia.html" class="px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-fuchsia-400 flex items-center gap-3 transition-colors">
+                        <i class="fas fa-atom w-4 text-fuchsia-500"></i> Sapientia (Inovação)
+                    </a>
+                </div>
+            </div>
+
+            <a href="mailto:pelegocorrea@gmail.com" class="text-slate-300 hover:text-white transition border border-slate-700 px-4 py-1.5 rounded-full hover:border-slate-500 hover:bg-slate-800">Contato</a>
         </div>
     </nav>
 
